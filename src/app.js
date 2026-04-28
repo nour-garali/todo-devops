@@ -1,12 +1,10 @@
 const express = require('express');
+const path = require('path');
 const app = express();
 app.use(express.json());
+app.use(express.static(path.join(__dirname, '../public')));
 
 let todos = [];
-
-app.get('/', (req, res) => {
-  res.send('<h1>Todo App</h1><p>API running!</p>');
-});
 
 app.get('/todos', (req, res) => res.json(todos));
 
